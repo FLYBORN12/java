@@ -22,30 +22,6 @@
                     </nav>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 stretch-card grid-margin">
-                        <div class="card bg-gradient-danger card-img-holder text-white">
-                            <div class="card-body">
-                                <img src="#{request.contextPath}/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                                <h4 class="font-weight-normal mb-3">Tu Plan <i class="mdi mdi mdi-cart-outline mdi-24px float-right"></i>
-                                </h4>
-                                <h2 class="mb-5">650.000</h2>
-                                <h6 class="card-text">6 MESES</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 stretch-card grid-margin">
-                        <div class="card bg-gradient-info card-img-holder text-white">
-                            <div class="card-body">
-                                <img src="#{request.contextPath}/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                                <h4 class="font-weight-normal mb-3">Entrenador Personal<i class="mdi mdi mdi-heart-pulse mdi-24px float-right"></i>
-                                </h4>
-                                <h2 class="mb-5">kevin Torres</h2>
-                                <h6 class="card-text"> NUMERO : 3020384321</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -54,22 +30,20 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th> ID Cliente</th>
                                                 <th> ID Compra</th>
+                                                <th> Cantidad</th>
                                                 <th> Producto </th>
                                                 <th> Precio </th>
-                                                <th> Fecha </th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach items="#{misdatosView.listaordenes}" var="objo">
                                                 <tr>
-                                                    <td>#{objo.ordenCompraPK.clienteidCliente}</td>
-                                                    <td>#{objo.ordenCompraPK.numfactura}</td>
-                                                    <td>#{objo.producto.nombre}</td>
-                                                    <td>#{objo.producto.precio}</td>
-                                                    <td>#{objo.fecha}</td>
+                                                    <td>#{objo.idOrdenCompra}</td>
+                                                    <td>#{objo.cantidad}</td>
+                                                    <td>#{objo.productoIdproducto.nombre}</td>
+                                                    <td><strong> $ </strong>#{objo.productoIdproducto.precio}</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

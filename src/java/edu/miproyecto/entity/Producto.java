@@ -6,23 +6,15 @@
 package edu.miproyecto.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,21 +22,17 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "producto")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idproducto")
-    private Integer idproducto;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "precio")
-    private double precio;
+    @Size(min = 1, max = 11)
+    @Column(name = "idproducto")
+    private String idproducto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -52,39 +40,35 @@ public class Producto implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "precio")
+    private String precio;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 5)
     @Column(name = "cantidad")
-    private int cantidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
-    private Collection<OrdenCompra> ordenCompraCollection;
+    private String cantidad;
 
     public Producto() {
     }
 
-    public Producto(Integer idproducto) {
+    public Producto(String idproducto) {
         this.idproducto = idproducto;
     }
 
-    public Producto(Integer idproducto, double precio, String nombre, int cantidad) {
+    public Producto(String idproducto, String nombre, String precio, String cantidad) {
         this.idproducto = idproducto;
-        this.precio = precio;
         this.nombre = nombre;
+        this.precio = precio;
         this.cantidad = cantidad;
     }
 
-    public Integer getIdproducto() {
+    public String getIdproducto() {
         return idproducto;
     }
 
-    public void setIdproducto(Integer idproducto) {
+    public void setIdproducto(String idproducto) {
         this.idproducto = idproducto;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
     }
 
     public String getNombre() {
@@ -95,21 +79,20 @@ public class Producto implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
-    }
-
-    @XmlTransient
-    public Collection<OrdenCompra> getOrdenCompraCollection() {
-        return ordenCompraCollection;
-    }
-
-    public void setOrdenCompraCollection(Collection<OrdenCompra> ordenCompraCollection) {
-        this.ordenCompraCollection = ordenCompraCollection;
     }
 
     @Override

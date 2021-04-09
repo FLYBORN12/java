@@ -5,10 +5,15 @@
  */
 package edu.miproyecto.controlador;
 
+import edu.miproyecto.entity.Cliente;
+import edu.miproyecto.facade.ClienteFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Properties;
+import java.util.Random;
+import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -23,6 +28,9 @@ import javax.mail.internet.MimeMessage;
 @SessionScoped
 public class recuperarpswView implements Serializable {
 
+    @EJB
+    ClienteFacadeLocal clientefacadelocal;
+
     /**
      * Creates a new instance of recuperarpswView
      */
@@ -30,8 +38,14 @@ public class recuperarpswView implements Serializable {
     }
     private String correoin = "";
     private String mensaje = "";
-    
-      public void enviarmensaje() {
+    private Random aleatorio = new Random();
+    private String letras = "ABCDEFGHIJKLMNOPQRSTVWXYZ";
+    private String nuevaPassword = "";
+    private int numero;
+    private int forma;
+    private Cliente userFound = new Cliente();
+
+    public void enviarmensaje() {
         try {
             Properties propiedad = new Properties();
             propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -40,25 +54,35 @@ public class recuperarpswView implements Serializable {
             propiedad.setProperty("mail.smtp.auth", "true");
 
             Session sesion = Session.getDefaultInstance(propiedad);
+            this.forma = (int) (aleatorio.nextDouble() * letras.length() - 1 + 4);
+            this.numero = (int) (aleatorio.nextDouble() * 86 + 100);
+            this.nuevaPassword = this.nuevaPassword + this.letras.charAt(forma) + numero;
+            this.userFound = clientefacadelocal.getCorreo(correoin);
+            if (userFound != null) {
+                userFound.setContrasenia(nuevaPassword);
+                clientefacadelocal.edit(userFound);
+                System.out.println("Cliente " + userFound.getId() + "Actualizado!");
+                String correoEnvia = "peoplegym56r@gmail.com";
+                String contrasenia = "Neverbroke1212";
+                String destinatario = correoin;
+                String asunto = "Recuperar contraseña";
+                String anuncio = "Tu codigo para recuperar tu contraseña : " + this.nuevaPassword;
 
-            String correoEnvia = "peoplegym56r@gmail.com";
-            String contrasenia = "Neverbroke1212";
-            String destinatario = correoin;
-            String asunto = "Recuperar contraseña";
-            String anuncio = "230061- Tu codigo para recuperar tu contraseña";
+                MimeMessage mail = new MimeMessage(sesion);
 
-            MimeMessage mail = new MimeMessage(sesion);
+                mensaje = "Enviado";
+                mail.setFrom(new InternetAddress(correoEnvia));
+                mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                mail.setSubject(asunto);
+                mail.setText(anuncio);
 
-            mensaje = "Enviado";
-            mail.setFrom(new InternetAddress(correoEnvia));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-            mail.setSubject(asunto);
-            mail.setText(anuncio);
-
-            Transport transporte = sesion.getTransport("smtp");
-            transporte.connect(correoEnvia, contrasenia);
-            transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
-            transporte.close();
+                Transport transporte = sesion.getTransport("smtp");
+                transporte.connect(correoEnvia, contrasenia);
+                transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                transporte.close();
+            } else {
+                System.out.println("Usuario no existe!");
+            }
         } catch (Exception e) {
             System.out.println("El error en el envio es:" + e);
             mensaje = "No,Enviado";
@@ -81,5 +105,5 @@ public class recuperarpswView implements Serializable {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-      
+
 }

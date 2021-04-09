@@ -26,51 +26,210 @@ public class actualizarView implements Serializable {
     /**
      * Creates a new instance of actualizarView
      */
+    loginView log = new loginView();
     private String mensaje = "";
-    private String contraseniavieja = "";
     private Cliente objcliente = new Cliente();
-    private Cliente idcliente;
+    private int idcliente = loginView.getIdCliente();
+    private Cliente userFound = new Cliente();
 
     public actualizarView() {
     }
 
-    /*public void actualizar() {
-        try {
-            clientefacadelocal.actualizacion(idclientein, tipoidin, nombrein, apellidoin, epsin, direccionin, acudientein, telacudienin, correoin, clavein, generoin, telefonoin);
-            mensaje = "sia";
-        } catch (Exception e) {
-            System.out.println("edu.miproyecto.controlador.actualizarView.actualizar()" + e.getMessage());
-            mensaje = "noa";
-        }
-
-    }*/
+//Function To Delete Count     
     public void eliminar() {
         try {
-            clientefacadelocal.remove(objcliente);
-            System.out.println("Cliente eliminado");
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                clientefacadelocal.remove(userFound);
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.getExternalContext().redirect("../index.xhtml");
+                System.out.println("Usuario Eliminado");
+            } else {
+                System.out.println("Usuario No Encontrado");
+            }
         } catch (Exception e) {
             System.out.println("Error al eliminar el cliente " + e);
         }
     }
+//Function To Update Data
 
-    public void actualizar() {
+    public void updateName() {
         try {
-            clientefacadelocal.edit(objcliente);
-            objcliente = new Cliente();
-            mensaje = "sia";
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setNombre(objcliente.getNombre());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
         } catch (Exception e) {
             mensaje = "noa";
-            System.out.println("La falla en la actualizacion es  :" + e);
+            System.out.println("El error al actualizar el nombre es " + e);
         }
     }
 
-    // Metodo para cancelar
-    public void cancelaractualizar() {
+    public void updateLastName() {
         try {
-            mensaje = "cancelado";
-            objcliente = new Cliente();
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setApellido(objcliente.getApellido());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
         } catch (Exception e) {
-            System.out.println("edu.miproyecto.controlador.actualizarView.cancelaractualizar()" + e.getMessage());
+            mensaje = "noa";
+            System.out.println("El error al actualizar el apellido es " + e);
+        }
+    }
+
+    public void updatePassword() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setContrasenia(objcliente.getContrasenia());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el contrasenia es " + e);
+        }
+    }
+
+    public void updateEmail() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setCorreo(objcliente.getCorreo());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el correo es " + e);
+        }
+    }
+
+    public void updateAge() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setEdad(objcliente.getEdad());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el edad es " + e);
+        }
+    }
+
+    public void updateEps() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setEps(objcliente.getEps());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el eps es " + e);
+        }
+    }
+
+    public void updateFechaNacimiento() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setFechaNacimiento(objcliente.getFechaNacimiento());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el fechanacimiento es " + e);
+        }
+    }
+
+    public void updateNombreAcudiente() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setNombreAcudiente(objcliente.getNombreAcudiente());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el nombreacudiente es " + e);
+        }
+    }
+
+    public void updateTelefonoAcudiente() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setTelefonoAcudiente(objcliente.getTelefonoAcudiente());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el telefonoacudiente es " + e);
+        }
+    }
+
+    public void updateTelefono() {
+        try {
+            userFound = clientefacadelocal.find(this.idcliente);
+            if (userFound != null) {
+                userFound.setTelefono(objcliente.getTelefono());
+                clientefacadelocal.edit(userFound);
+                objcliente = new Cliente();
+                mensaje = "sia";
+            } else {
+                mensaje = "noa";
+                System.out.println("Usuario No Encontrado");
+            }
+        } catch (Exception e) {
+            mensaje = "noa";
+            System.out.println("El error al actualizar el telefono es " + e);
         }
     }
 
@@ -90,12 +249,15 @@ public class actualizarView implements Serializable {
         this.objcliente = objcli;
     }
 
-    public String getContraseniavieja() {
-        return contraseniavieja;
+    public int getIdCliente() {
+        return idcliente;
     }
 
-    public void setContraseniavieja(String contraseniavieja) {
-        this.contraseniavieja = contraseniavieja;
+    public void setIdCliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
+    public Cliente getUserFound() {
+        return userFound;
+    }
 }

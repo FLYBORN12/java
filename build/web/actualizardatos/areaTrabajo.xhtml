@@ -7,7 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
-
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -23,142 +22,140 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Formulario de actualizacion</h4>
-                                <h:form class="forms-sample">
-                                    <c:if test="#{actualizarView.mensaje.equalsIgnoreCase('sia')}">
-                                        <div class="row" id="proBanner">
-                                            <div class="col-12">
-                                                <span class="d-flex justify-content-between purchase-popup bg-success">
-                                                    <p class="text-dark">Actualizacion hecha!</p>
-                                                    <i class="icon-md mdi mdi-close" id="bannerClose"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="#{actualizarView.mensaje.equalsIgnoreCase('noa')}">
-                                        <div class="row" id="proBanner">
-                                            <div class="col-12">
-                                                <span class="d-flex justify-content-between purchase-popup bg-danger">
-                                                    <p class="text-dark">Ups,Algo salio mal</p>
-                                                    <i class="icon-md mdi mdi-close" id="bannerClose"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="#{actualizarView.mensaje.equalsIgnoreCase('cancelado')}">
-                                        <div class="row" id="proBanner">
-                                            <div class="col-12">
-                                                <span class="d-flex justify-content-between purchase-popup bg-danger">
-                                                    <p class="text-dark">Actualizacion Cancelada</p>
-                                                    <i class="icon-md mdi mdi-close" id="bannerClose"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextid">Numero Identificacion</label>
-                                        <h:message for="exampleinputTextid" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese identificacion" value="#{actualizarView.objcliente.idCliente}" class="form-control" id="exampleinputTextid" html5:placeholder="Numero identicacion"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Tipo de Identificacion</label>
-                                        <h:message for="exampleFormControlSelect1" style="color:red;display: block"></h:message>
-                                        <h:selectOneMenu required="true" requiredMessage="ingrese tipo id" value="#{actualizarView.objcliente.tipoid}" class="form-control form-control-lg" id="exampleFormControlSelect1">
-                                            <f:selectItem itemValue="Cedula" itemLabel="Cedula"></f:selectItem>
-                                            <f:selectItem itemValue="Pasaporte" itemLabel="Pasaporte"></f:selectItem>
-                                            <f:selectItem itemValue="T.I" itemLabel="Tarjeta Identidad"></f:selectItem>
-                                        </h:selectOneMenu>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextName1">Nombre</label>
-                                        <h:message for="exampleinputTextName1" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Nombre" value="#{actualizarView.objcliente.nombre}" class="form-control" id="exampleinputTextName1" html5:placeholder="Nombre"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextLastName1">Apellidos</label>
-                                        <h:message for="exampleinputTextLastName1" style="color:red;display: block"></h:message>
-                                        <h:inputText  required="true" requiredMessage="ingrese Apellidos" value="#{actualizarView.objcliente.apellido}" class="form-control" id="exampleinputTextLastName1" html5:placeholder="Nombre"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputedad">Edad</label>
-                                        <h:message for="exampleinputedad" style="color:red;display: block"></h:message>
-                                        <h:inputText  required="true" requiredMessage="ingrese Edad" value="#{actualizarView.objcliente.edad}" class="form-control" id="exampleinputedad" html5:placeholder="Edad"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextgenero">Genero</label>
-                                        <h:message for="exampleinputTextgenero" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese genero" value="#{actualizarView.objcliente.genero}" class="form-control" id="exampleinputTextgenero" html5:placeholder="Genero"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextEmail3">Email </label>
-                                        <h:message for="examplenputTextEmail3" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Email" value="#{actualizarView.objcliente.correo}" class="form-control" id="examplenputTextEmail3" html5:placeholder="Email"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextEps">Eps</label>
-                                        <h:message for="examplinputTextEps" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Eps" value="#{actualizarView.objcliente.eps}" class="form-control" id="examplinputTextEps" html5:placeholder="Eps"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextrh">Rh</label>
-                                        <h:message for="examplinputTextrh" style="color:red;display: block"></h:message>
-                                        <h:inputText value="#{actualizarView.objcliente.rh}" class="form-control" id="examplinputTextrh" html5:placeholder="Rh"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextFechaNA">Fecha Nacimiento</label>
-                                        <h:message for="examplinputTextfechaNa" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Fecha Nacimiento" value="#{actualizarView.objcliente.fechaNacimiento}" class="form-control" id="examplinputTextfechaNa" html5:placeholder="DD/MM/AA"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextPassword44">Contraseña Nueva</label>
-                                        <h:message for="exampleinputTextPassword44" style="color:red;display: block"></h:message>
-                                        <h:inputSecret required="true" requiredMessage="ingrese Nueva Contraseña" value="#{actualizarView.objcliente.contrasenia}" class="form-control" id="exampleinputTextPassword44" html5:placeholder="Contraseña Nueva"></h:inputSecret>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTelefono">Telefono</label>
-                                        <h:message for="exampleinputTeleofono" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese telefono" value="#{actualizarView.objcliente.telefono}" class="form-control" id="exampleinputTeleofono" html5:placeholder="Numero telefonico"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextCity1">Direccion</label>
-                                        <h:message for="exampleinputTextCity1" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Direccion" value="#{actualizarView.objcliente.direccion}" class="form-control" id="exampleinputTextCity1" html5:placeholder="Residencia"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextAcudiente">Nombre Acudiente</label>
-                                        <h:message for="exampleinputTextAcudiente" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese Nombre Acudiente" value="#{actualizarView.objcliente.acudiente}" class="form-control" id="exampleinputTextAcudiente" html5:placeholder="Nombre Acudiente"></h:inputText>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleinputTextTelAcudiente">Telefono Acudiente</label>
-                                        <h:message for="exampleinputTextTelAcudiente" style="color:red;display: block"></h:message>
-                                        <h:inputText required="true" requiredMessage="ingrese telefono acudiente" value="#{actualizarView.objcliente.telofonoAcudi}" class="form-control" id="exampleinputTextTelAcudiente" html5:placeholder="Telefono Acudiente"></h:inputText>
-                                    </div>
-                                    <h:commandButton action="#{actualizarView.actualizar()}" class="btn btn-gradient-primary mr-2" value="Enviar"></h:commandButton>
-                                    <h:commandButton action="#{actualizarView.cancelaractualizar()}" class="btn btn-light" value="Cancelar"></h:commandButton>
-                                    <div class="page-header">
-                                        <h3 class="page-title">Delete Your Count </h3>
-                                        <nav aria-label="breadcrumb">
-                                            <ol class="breadcrumb">
-                                                <li class="breadcrumb-item"><p>Delete</p></li>
-                                            </ol>
-                                        </nav>
-                                    </div>
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title"><code>Are You Sure?</code></h4>
-                                                <h:form class="form-inline">
-                                                    <h:commandButton  class="btn btn-danger mb-2" value="Delete" action="#{actualizarView.eliminar()}" ></h:commandButton>
-                                                </h:form>
-                                            </div>
+                                <div class="col-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <c:if test="#{actualizarView.mensaje.equalsIgnoreCase('sia')}">
+                                                <div class="row" id="proBanner">
+                                                    <div class="col-12">
+                                                        <span class="d-flex justify-content-between purchase-popup bg-success">
+                                                            <p class="text-dark">Update done!</p>
+                                                            <i class="icon-md mdi mdi-close" id="bannerClose"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="#{actualizarView.mensaje.equalsIgnoreCase('noa')}">
+                                                <div class="row" id="proBanner">
+                                                    <div class="col-12">
+                                                        <span class="d-flex justify-content-between purchase-popup bg-danger">
+                                                            <p class="text-dark">Ups Something went wrong!</p>
+                                                            <i class="icon-md mdi mdi-close" id="bannerClose"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                            <p class="card-description"><code>Nombre</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.nombre}"></h:outputText>                                               
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputText  class="form-control"  value="#{actualizarView.objcliente.nombre}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateName()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Apellido</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.apellido}"></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.apellido}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateLastName()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Telefono</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2"  value="#{actualizarView.userFound.telefono}"></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.telefono}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateTelefono()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Edad</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.edad}" ></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.edad}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateAge()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Fecha Nacimiento</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2"  value="#{actualizarView.userFound.fechaNacimiento}"></h:outputText>                                         
+                                                <div class="input-group mb-2 mr-sm-2">                                 
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.fechaNacimiento}"  html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateFechaNacimiento()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Eps</code></p>
+                                            <h:form class="form-inline">  
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.eps}" ></h:outputText>                                      
+                                                <div class="input-group mb-2 mr-sm-2">                               
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.eps}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateEps()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+
+                                            </h:form>
+                                            <p class="card-description"><code>Contraseña Nueva</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.contrasenia}"></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputSecret  class="form-control" value="#{actualizarView.objcliente.contrasenia}" html5:placeholder="Username"></h:inputSecret>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updatePassword()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>NombreAcudiente</code></p>
+                                            <h:form class="form-inline">   
+                                                <h:outputText  class="form-control mb-2 mr-sm-2"  value="#{actualizarView.userFound.nombreAcudiente}"></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.nombreAcudiente}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateNombreAcudiente()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>TelefonoAcudiente</code></p>
+                                            <h:form class="form-inline">   
+                                                <h:outputText  class="form-control mb-2 mr-sm-2"  value="#{actualizarView.userFound.telefonoAcudiente}"></h:outputText>                                              
+                                                <div class="input-group mb-2 mr-sm-2">                               
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.telefonoAcudiente}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateTelefonoAcudiente()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
+                                            <p class="card-description"><code>Email</code></p>
+                                            <h:form class="form-inline">
+                                                <h:outputText  class="form-control mb-2 mr-sm-2" value="#{actualizarView.userFound.correo}" ></h:outputText>
+                                                <div class="input-group mb-2 mr-sm-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">@</div>
+                                                    </div>
+                                                    <h:inputText  class="form-control" value="#{actualizarView.objcliente.correo}" html5:placeholder="Username"></h:inputText>
+                                                </div>
+                                                <h:commandButton action="#{actualizarView.updateEmail()}" class="btn btn-gradient-primary mb-2" value="Update"></h:commandButton>
+                                            </h:form>
                                         </div>
                                     </div>
-                                </h:form>
+                                </div>
+                                <div class="page-header">
+                                    <h3 class="page-title">Delete Your Count </h3>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><p>Delete</p></li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                                <div class="col-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title"><code>Are You Sure?</code></h4>
+                                            <h:form class="form-inline">
+                                                <h:commandButton  class="btn btn-danger mb-2" value="Delete" action="#{actualizarView.eliminar()}" ></h:commandButton>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- content-wrapper ends -->
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer">

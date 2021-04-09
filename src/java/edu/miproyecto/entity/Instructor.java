@@ -21,10 +21,10 @@ import javax.validation.constraints.Size;
  * @author juanf
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "instructor")
 @NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
-public class Cliente implements Serializable {
+    @NamedQuery(name = "Instructor.findAll", query = "SELECT i FROM Instructor i")})
+public class Instructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,11 +32,6 @@ public class Cliente implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "tipoid")
-    private String tipoid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -53,12 +48,17 @@ public class Cliente implements Serializable {
     private int edad;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 17)
+    @Size(min = 1, max = 45)
+    @Column(name = "fechaNacimiento")
+    private String fechaNacimiento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "telefono")
     private String telefono;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 60)
+    @Size(min = 1, max = 45)
     @Column(name = "correo")
     private String correo;
     @Basic(optional = false)
@@ -68,50 +68,38 @@ public class Cliente implements Serializable {
     private String eps;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "fechaNacimiento")
-    private String fechaNacimiento;
+    @Size(min = 1, max = 60)
+    @Column(name = "salario")
+    private String salario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "rh")
-    private String rh;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nombreAcudiente")
-    private String nombreAcudiente;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "telefonoAcudiente")
-    private String telefonoAcudiente;
+    @Size(min = 1, max = 70)
+    @Column(name = "direccion")
+    private String direccion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "contrasenia")
     private String contrasenia;
 
-    public Cliente() {
+    public Instructor() {
     }
 
-    public Cliente(Integer id) {
+    public Instructor(Integer id) {
         this.id = id;
     }
 
-    public Cliente(Integer id, String tipoid, String nombre, String apellido, int edad, String telefono, String correo, String eps, String fechaNacimiento, String rh, String nombreAcudiente, String telefonoAcudiente, String contrasenia) {
+    public Instructor(Integer id, String nombre, String apellido, int edad, String fechaNacimiento, String telefono, String correo, String eps, String salario, String direccion, String contrasenia) {
         this.id = id;
-        this.tipoid = tipoid;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.correo = correo;
         this.eps = eps;
-        this.fechaNacimiento = fechaNacimiento;
-        this.rh = rh;
-        this.nombreAcudiente = nombreAcudiente;
-        this.telefonoAcudiente = telefonoAcudiente;
+        this.salario = salario;
+        this.direccion = direccion;
         this.contrasenia = contrasenia;
     }
 
@@ -121,14 +109,6 @@ public class Cliente implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTipoid() {
-        return tipoid;
-    }
-
-    public void setTipoid(String tipoid) {
-        this.tipoid = tipoid;
     }
 
     public String getNombre() {
@@ -155,6 +135,14 @@ public class Cliente implements Serializable {
         this.edad = edad;
     }
 
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -179,36 +167,20 @@ public class Cliente implements Serializable {
         this.eps = eps;
     }
 
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getSalario() {
+        return salario;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setSalario(String salario) {
+        this.salario = salario;
     }
 
-    public String getRh() {
-        return rh;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setRh(String rh) {
-        this.rh = rh;
-    }
-
-    public String getNombreAcudiente() {
-        return nombreAcudiente;
-    }
-
-    public void setNombreAcudiente(String nombreAcudiente) {
-        this.nombreAcudiente = nombreAcudiente;
-    }
-
-    public String getTelefonoAcudiente() {
-        return telefonoAcudiente;
-    }
-
-    public void setTelefonoAcudiente(String telefonoAcudiente) {
-        this.telefonoAcudiente = telefonoAcudiente;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getContrasenia() {
@@ -229,10 +201,10 @@ public class Cliente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof Instructor)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        Instructor other = (Instructor) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -241,7 +213,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.miproyecto.entity.Cliente[ id=" + id + " ]";
+        return "edu.miproyecto.entity.Instructor[ id=" + id + " ]";
     }
     
 }

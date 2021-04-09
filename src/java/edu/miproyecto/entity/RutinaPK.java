@@ -20,70 +20,42 @@ public class RutinaPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idejercicios")
-    private int idejercicios;
+    @Column(name = "idrutina")
+    private int idrutina;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "cliente_idCliente")
-    private int clienteidCliente;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "maquinas_idmaquina")
-    private int maquinasIdmaquina;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "musculos_idmusculos")
-    private int musculosIdmusculos;
+    @Column(name = "cliente_id")
+    private int clienteId;
 
     public RutinaPK() {
     }
 
-    public RutinaPK(int idejercicios, int clienteidCliente, int maquinasIdmaquina, int musculosIdmusculos) {
-        this.idejercicios = idejercicios;
-        this.clienteidCliente = clienteidCliente;
-        this.maquinasIdmaquina = maquinasIdmaquina;
-        this.musculosIdmusculos = musculosIdmusculos;
+    public RutinaPK(int idrutina, int clienteId) {
+        this.idrutina = idrutina;
+        this.clienteId = clienteId;
     }
 
-    public int getIdejercicios() {
-        return idejercicios;
+    public int getIdrutina() {
+        return idrutina;
     }
 
-    public void setIdejercicios(int idejercicios) {
-        this.idejercicios = idejercicios;
+    public void setIdrutina(int idrutina) {
+        this.idrutina = idrutina;
     }
 
-    public int getClienteidCliente() {
-        return clienteidCliente;
+    public int getClienteId() {
+        return clienteId;
     }
 
-    public void setClienteidCliente(int clienteidCliente) {
-        this.clienteidCliente = clienteidCliente;
-    }
-
-    public int getMaquinasIdmaquina() {
-        return maquinasIdmaquina;
-    }
-
-    public void setMaquinasIdmaquina(int maquinasIdmaquina) {
-        this.maquinasIdmaquina = maquinasIdmaquina;
-    }
-
-    public int getMusculosIdmusculos() {
-        return musculosIdmusculos;
-    }
-
-    public void setMusculosIdmusculos(int musculosIdmusculos) {
-        this.musculosIdmusculos = musculosIdmusculos;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) idejercicios;
-        hash += (int) clienteidCliente;
-        hash += (int) maquinasIdmaquina;
-        hash += (int) musculosIdmusculos;
+        hash += (int) idrutina;
+        hash += (int) clienteId;
         return hash;
     }
 
@@ -94,16 +66,10 @@ public class RutinaPK implements Serializable {
             return false;
         }
         RutinaPK other = (RutinaPK) object;
-        if (this.idejercicios != other.idejercicios) {
+        if (this.idrutina != other.idrutina) {
             return false;
         }
-        if (this.clienteidCliente != other.clienteidCliente) {
-            return false;
-        }
-        if (this.maquinasIdmaquina != other.maquinasIdmaquina) {
-            return false;
-        }
-        if (this.musculosIdmusculos != other.musculosIdmusculos) {
+        if (this.clienteId != other.clienteId) {
             return false;
         }
         return true;
@@ -111,7 +77,7 @@ public class RutinaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.miproyecto.entity.RutinaPK[ idejercicios=" + idejercicios + ", clienteidCliente=" + clienteidCliente + ", maquinasIdmaquina=" + maquinasIdmaquina + ", musculosIdmusculos=" + musculosIdmusculos + " ]";
+        return "edu.miproyecto.entity.RutinaPK[ idrutina=" + idrutina + ", clienteId=" + clienteId + " ]";
     }
     
 }

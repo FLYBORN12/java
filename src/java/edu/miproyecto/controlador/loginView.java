@@ -23,15 +23,16 @@ public class loginView implements Serializable {
 
     @EJB 
     ClienteFacadeLocal clientefacadelocal;
-    /**
-     * Creates a new instance of loginView
-     */
+
     public loginView() {
     }
+
     
     private String mensaje = "";
     private String correoin = "";
     private String clavein = "";
+    private static int idcliente;
+    
     
     private Cliente objcliente = new Cliente();
     
@@ -39,9 +40,11 @@ public class loginView implements Serializable {
         public void validarcliente() {
         try {
            objcliente = clientefacadelocal.verificacion(correoin, clavein);
+           idcliente = objcliente.getId();
             if (objcliente.getCorreo() != null) {
                 FacesContext fc = FacesContext.getCurrentInstance();
                 fc.getExternalContext().redirect("../misdatos/index.xhtml");
+                System.out.println("El id es " + idcliente);
             } else {
                 mensaje = "No,login";
             }
@@ -82,6 +85,9 @@ public class loginView implements Serializable {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-        
+    
+    public static int getIdCliente(){
+        return idcliente;
+    }
         
 }

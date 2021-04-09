@@ -10,15 +10,11 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,7 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "plannutricional")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Plannutricional.findAll", query = "SELECT p FROM Plannutricional p")})
 public class Plannutricional implements Serializable {
@@ -36,18 +31,33 @@ public class Plannutricional implements Serializable {
     protected PlannutricionalPK plannutricionalPK;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "Alimento")
-    private String alimento;
-    @JoinColumn(name = "Cliente_idCliente", referencedColumnName = "idCliente", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente cliente;
-    @JoinColumn(name = "Dia_idDia", referencedColumnName = "idDia", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Dia dia;
-    @JoinColumn(name = "Timefood_idTimefood", referencedColumnName = "idTimefood", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Timefood timefood;
+    @Size(min = 1, max = 15)
+    @Column(name = "idDia")
+    private String idDia;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "desayuno")
+    private String desayuno;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "onces")
+    private String onces;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "almuerzo")
+    private String almuerzo;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "temaNutricional")
+    private String temaNutricional;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "instructor_id")
+    private int instructorId;
 
     public Plannutricional() {
     }
@@ -56,13 +66,18 @@ public class Plannutricional implements Serializable {
         this.plannutricionalPK = plannutricionalPK;
     }
 
-    public Plannutricional(PlannutricionalPK plannutricionalPK, String alimento) {
+    public Plannutricional(PlannutricionalPK plannutricionalPK, String idDia, String desayuno, String onces, String almuerzo, String temaNutricional, int instructorId) {
         this.plannutricionalPK = plannutricionalPK;
-        this.alimento = alimento;
+        this.idDia = idDia;
+        this.desayuno = desayuno;
+        this.onces = onces;
+        this.almuerzo = almuerzo;
+        this.temaNutricional = temaNutricional;
+        this.instructorId = instructorId;
     }
 
-    public Plannutricional(String timefoodidTimefood, String diaidDia, int clienteidCliente) {
-        this.plannutricionalPK = new PlannutricionalPK(timefoodidTimefood, diaidDia, clienteidCliente);
+    public Plannutricional(int idplanNutricional, int clienteId) {
+        this.plannutricionalPK = new PlannutricionalPK(idplanNutricional, clienteId);
     }
 
     public PlannutricionalPK getPlannutricionalPK() {
@@ -73,36 +88,52 @@ public class Plannutricional implements Serializable {
         this.plannutricionalPK = plannutricionalPK;
     }
 
-    public String getAlimento() {
-        return alimento;
+    public String getIdDia() {
+        return idDia;
     }
 
-    public void setAlimento(String alimento) {
-        this.alimento = alimento;
+    public void setIdDia(String idDia) {
+        this.idDia = idDia;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getDesayuno() {
+        return desayuno;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setDesayuno(String desayuno) {
+        this.desayuno = desayuno;
     }
 
-    public Dia getDia() {
-        return dia;
+    public String getOnces() {
+        return onces;
     }
 
-    public void setDia(Dia dia) {
-        this.dia = dia;
+    public void setOnces(String onces) {
+        this.onces = onces;
     }
 
-    public Timefood getTimefood() {
-        return timefood;
+    public String getAlmuerzo() {
+        return almuerzo;
     }
 
-    public void setTimefood(Timefood timefood) {
-        this.timefood = timefood;
+    public void setAlmuerzo(String almuerzo) {
+        this.almuerzo = almuerzo;
+    }
+
+    public String getTemaNutricional() {
+        return temaNutricional;
+    }
+
+    public void setTemaNutricional(String temaNutricional) {
+        this.temaNutricional = temaNutricional;
+    }
+
+    public int getInstructorId() {
+        return instructorId;
+    }
+
+    public void setInstructorId(int instructorId) {
+        this.instructorId = instructorId;
     }
 
     @Override

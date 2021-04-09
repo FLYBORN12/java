@@ -5,8 +5,8 @@
  */
 package edu.miproyecto.controlador;
 
-import edu.miproyecto.entity.OrdenCompra;
-import edu.miproyecto.facade.OrdenCompraFacadeLocal;
+import edu.miproyecto.entity.Ordencompra;
+import edu.miproyecto.facade.OrdencompraFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import javax.ejb.EJB;
 public class misdatosView implements Serializable {
 
     @EJB
-    OrdenCompraFacadeLocal ordencomprafacadelocal;
+    OrdencompraFacadeLocal ordencomprafacadelocal;
     /**
      * Creates a new instance of misdatosView
      */
@@ -31,20 +31,18 @@ public class misdatosView implements Serializable {
     }
     
     
-    private ArrayList<OrdenCompra> listaordenes = new ArrayList<>();
+    private ArrayList<Ordencompra> listaordenes = new ArrayList<>();
     
     @PostConstruct
     public void cargainicial(){
         listaordenes.addAll(ordencomprafacadelocal.findAll());
     }
 
-   
-
-    public ArrayList<OrdenCompra> getListaordenes() {
+    public ArrayList<Ordencompra> getListaordenes() {
         return listaordenes;
     }
 
-    public void setListaordenes(ArrayList<OrdenCompra> listaordenes) {
+    public void setListaordenes(ArrayList<Ordencompra> listaordenes) {
         this.listaordenes = listaordenes;
     }
     

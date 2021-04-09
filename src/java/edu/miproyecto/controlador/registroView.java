@@ -46,7 +46,6 @@ public class registroView implements Serializable {
         }
     }
 
-
     public Cliente getObjcliente() {
         return objcliente;
     }

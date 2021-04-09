@@ -10,7 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -21,58 +20,42 @@ public class PlannutricionalPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "Timefood_idTimefood")
-    private String timefoodidTimefood;
+    @Column(name = "idplanNutricional")
+    private int idplanNutricional;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "Dia_idDia")
-    private String diaidDia;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Cliente_idCliente")
-    private int clienteidCliente;
+    @Column(name = "cliente_id")
+    private int clienteId;
 
     public PlannutricionalPK() {
     }
 
-    public PlannutricionalPK(String timefoodidTimefood, String diaidDia, int clienteidCliente) {
-        this.timefoodidTimefood = timefoodidTimefood;
-        this.diaidDia = diaidDia;
-        this.clienteidCliente = clienteidCliente;
+    public PlannutricionalPK(int idplanNutricional, int clienteId) {
+        this.idplanNutricional = idplanNutricional;
+        this.clienteId = clienteId;
     }
 
-    public String getTimefoodidTimefood() {
-        return timefoodidTimefood;
+    public int getIdplanNutricional() {
+        return idplanNutricional;
     }
 
-    public void setTimefoodidTimefood(String timefoodidTimefood) {
-        this.timefoodidTimefood = timefoodidTimefood;
+    public void setIdplanNutricional(int idplanNutricional) {
+        this.idplanNutricional = idplanNutricional;
     }
 
-    public String getDiaidDia() {
-        return diaidDia;
+    public int getClienteId() {
+        return clienteId;
     }
 
-    public void setDiaidDia(String diaidDia) {
-        this.diaidDia = diaidDia;
-    }
-
-    public int getClienteidCliente() {
-        return clienteidCliente;
-    }
-
-    public void setClienteidCliente(int clienteidCliente) {
-        this.clienteidCliente = clienteidCliente;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (timefoodidTimefood != null ? timefoodidTimefood.hashCode() : 0);
-        hash += (diaidDia != null ? diaidDia.hashCode() : 0);
-        hash += (int) clienteidCliente;
+        hash += (int) idplanNutricional;
+        hash += (int) clienteId;
         return hash;
     }
 
@@ -83,13 +66,10 @@ public class PlannutricionalPK implements Serializable {
             return false;
         }
         PlannutricionalPK other = (PlannutricionalPK) object;
-        if ((this.timefoodidTimefood == null && other.timefoodidTimefood != null) || (this.timefoodidTimefood != null && !this.timefoodidTimefood.equals(other.timefoodidTimefood))) {
+        if (this.idplanNutricional != other.idplanNutricional) {
             return false;
         }
-        if ((this.diaidDia == null && other.diaidDia != null) || (this.diaidDia != null && !this.diaidDia.equals(other.diaidDia))) {
-            return false;
-        }
-        if (this.clienteidCliente != other.clienteidCliente) {
+        if (this.clienteId != other.clienteId) {
             return false;
         }
         return true;
@@ -97,7 +77,7 @@ public class PlannutricionalPK implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.miproyecto.entity.PlannutricionalPK[ timefoodidTimefood=" + timefoodidTimefood + ", diaidDia=" + diaidDia + ", clienteidCliente=" + clienteidCliente + " ]";
+        return "edu.miproyecto.entity.PlannutricionalPK[ idplanNutricional=" + idplanNutricional + ", clienteId=" + clienteId + " ]";
     }
     
 }
