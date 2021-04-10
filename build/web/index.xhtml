@@ -22,8 +22,6 @@
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a href="">About
                             Us</a></li>
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
-                            href="">Quote</a></li>
-                    <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a
                             href="">Contact Us</a></li>
                     <li class="font-semibold text-gray-700 border-b-2 border-transparent hover:border-purple-600"><a href="pb/login.xhtml">Sign
                             in</a></li>
@@ -99,7 +97,12 @@
             </div>
         </footer>
         <!--Footer-->
-
+        <h:form>
+            <div>
+                <h1>>Boton para insertar</h1>
+                <h:commandButton action="#{productocsv.importarCsvs()}" value="Cargar"></h:commandButton>
+            </div>
+        </h:form>
     </h:body>
 </html>
 
