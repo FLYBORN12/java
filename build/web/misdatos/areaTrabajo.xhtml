@@ -33,8 +33,6 @@
                                                 <th> ID Compra</th>
                                                 <th> Cantidad</th>
                                                 <th> Producto </th>
-                                                <th> Precio </th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,8 +40,7 @@
                                                 <tr>
                                                     <td>#{objo.idOrdenCompra}</td>
                                                     <td>#{objo.cantidad}</td>
-                                                    <td>#{objo.productoIdproducto.nombre}</td>
-                                                    <td><strong> $ </strong>#{objo.productoIdproducto.precio}</td>
+                                                    <td>#{objo.productoIdproducto}</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

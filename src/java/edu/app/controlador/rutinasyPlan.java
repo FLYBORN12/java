@@ -5,10 +5,14 @@
  */
 package edu.app.controlador;
 
+import edu.app.entities.Cliente;
+import edu.app.entities.Rutina;
 import edu.app.facade.RutinaFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 /**
@@ -20,10 +24,25 @@ import javax.ejb.EJB;
 public class rutinasyPlan implements Serializable {
 
     @EJB
-    RutinaFacadeLocal rutinafacadelocal;
-   
+    private RutinaFacadeLocal rutinafacadelocal;
+    private ArrayList<Rutina> listaru = new ArrayList<>();
+
     public rutinasyPlan() {
+
     }
-    
-    
+
+    @PostConstruct
+    public void cargarRyP() {
+
+        listaru.addAll(rutinafacadelocal.findAll());
+    }
+
+    public ArrayList<Rutina> getListaru() {
+        return listaru;
+    }
+
+    public void setListaru(ArrayList<Rutina> listaru) {
+        this.listaru = listaru;
+    }
+
 }

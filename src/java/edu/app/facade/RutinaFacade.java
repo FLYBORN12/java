@@ -28,5 +28,4 @@ public class RutinaFacade extends AbstractFacade<Rutina> implements RutinaFacade
     public RutinaFacade() {
         super(Rutina.class);
     }
-    
 }

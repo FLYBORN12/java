@@ -5,6 +5,7 @@
  */
 package edu.app.facade;
 
+
 import edu.app.entities.Rutina;
 import java.util.List;
 import javax.ejb.Local;
