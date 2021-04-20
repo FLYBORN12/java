@@ -54,8 +54,8 @@ public class recuperarpswView implements Serializable {
             propiedad.setProperty("mail.smtp.auth", "true");
 
             Session sesion = Session.getDefaultInstance(propiedad);
-            this.forma = (int) (aleatorio.nextDouble() * letras.length() - 1 + 4);
-            this.numero = (int) (aleatorio.nextDouble() * 86 + 100);
+            this.forma = (int) (aleatorio.nextDouble() * letras.length() - 1 +0);
+            this.numero = (int) (aleatorio.nextDouble() * 99 + 100);
             this.nuevaPassword = this.nuevaPassword + this.letras.charAt(forma) + numero;
             this.userFound = clientefacadelocal.getCorreo(correoin);
             if (userFound != null) {

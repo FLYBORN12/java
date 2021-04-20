@@ -47,6 +47,7 @@ public class loginView implements Serializable {
                 System.out.println("El id es " + idcliente);
             } else {
                 mensaje = "No,login";
+                objcliente = new Cliente();
             }
         } catch (Exception e) {
             System.out.println("El error en validar cliente es :" + e);

@@ -6,6 +6,7 @@
 package edu.app.facade;
 
 
+import edu.app.entities.Plannutricional;
 import edu.app.entities.Rutina;
 import java.util.List;
 import javax.ejb.Local;
@@ -30,5 +31,9 @@ public interface RutinaFacadeLocal {
     List<Rutina> findRange(int[] range);
 
     int count();
+    
+    public List<Rutina>findRoutineById(int idcliente);
+    
+    public List<Plannutricional>findPlanById(int idcliente);
     
 }

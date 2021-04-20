@@ -6,6 +6,7 @@
 package edu.app.controlador;
 
 import edu.app.entities.Cliente;
+import edu.app.entities.Plannutricional;
 import edu.app.entities.Rutina;
 import edu.app.facade.RutinaFacadeLocal;
 import javax.inject.Named;
@@ -25,7 +26,9 @@ public class rutinasyPlan implements Serializable {
 
     @EJB
     private RutinaFacadeLocal rutinafacadelocal;
-    private ArrayList<Rutina> listaru = new ArrayList<>();
+    private ArrayList<Rutina> listarutina = new ArrayList<>();
+    private int idCliente = loginView.getIdCliente();
+    private ArrayList<Plannutricional> listaPlan = new ArrayList<>();
 
     public rutinasyPlan() {
 
@@ -33,16 +36,25 @@ public class rutinasyPlan implements Serializable {
 
     @PostConstruct
     public void cargarRyP() {
-
-        listaru.addAll(rutinafacadelocal.findAll());
+        listarutina.addAll(rutinafacadelocal.findRoutineById(idCliente));
+        listaPlan.addAll(rutinafacadelocal.findPlanById(idCliente));
     }
 
+    public void  mostrarRutinas(){
+        
+    }
+    
     public ArrayList<Rutina> getListaru() {
-        return listaru;
+        return listarutina;
     }
 
     public void setListaru(ArrayList<Rutina> listaru) {
-        this.listaru = listaru;
+        this.listarutina = listaru;
     }
-
+    public ArrayList<Plannutricional> getPlannutricional(){
+        return listaPlan;
+    }
+    public void setListaPlan(ArrayList<Plannutricional>listaPlann){
+        this.listaPlan = listaPlann;
+    }
 }

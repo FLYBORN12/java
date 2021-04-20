@@ -52,172 +52,25 @@
                                         <tr>
                                             <th>Dia/Menú</th>
                                             <th>Desayuno</th>
-                                            <th>Merienda</th>
                                             <th>Almuerzo</th>
-                                            <th>Merienda</th>
                                             <th>Cena</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="table-info">
-                                            <td>Lunes</td>
-                                            <td>
-                                                Sandwich integral de <br/> 
-                                                jamon de pavo,<br/> jugo de piña
-                                                <br/>y yogurth griego
-                                            </td>
-                                            <td>
-                                                1 manzana<br/>un puñado de<br/>
-                                                frutos secos,<br/>1 vaso de agua
-                                            </td>
-                                            <td>
-                                                Pechuga de pollo a la<br/> 
-                                                plancha, arroz integral,<br/>brocoli
-                                                agua de piña
-                                            </td>
-                                            <td>
-                                                yogurth griego<br/>
-                                                con fruta preferida
-                                            </td>
-                                            <td>
-                                                Sopa de verduras<br/>
-                                                (opcinal)<br/>
-                                                Pechuga de pollo 
-
-                                            </td>
-                                        </tr>
-                                        <tr class="table-warning">
-                                            <td>Martes</td>
-                                            <td>
-                                                Avena en leche<br/>
-                                                banano<br/>
-                                                vaso de agua
-                                            </td>
-                                            <td>
-                                                1 banano<br/>
-                                                frutos secos<br/>
-                                                1 vaso de agua 
-                                            </td>
-                                            <td>
-                                                Sopa de verdura<br/>
-                                                1/2 arroz integral
-                                            </td>
-                                            <td>
-                                                Batido de papaya
-                                            </td>
-                                            <td>
-                                                Pescado al vapor<br/>
-                                                ensalada (a gusto)
-                                            </td>
-                                        </tr>
-                                        <tr class="table-danger">
-                                            <td>Miercoles</td>
-                                            <td>
-                                                Cereal integral en<br/>
-                                                leche de almendra<br/>
-                                                1 banano<br/>
-                                                vaso de agua
-                                            </td>
-                                            <td>
-                                                1 banano<br/>
-                                                frutos secos<br/>
-                                                vaso agua piña    
-                                            </td>
-                                            <td>
-                                                Pescado al vapor<br/>
-                                                ensalada
-                                            </td>
-                                            <td>
-                                                1 manzana
-                                            </td>
-                                            <td>
-                                                Filete a la plancha<br/>
-                                                Verduras cocidas<br/>
-                                                1 fruta
-                                            </td>
-                                        </tr>
-                                        <tr class="table-success">
-                                            <td>Jueves</td>
-                                            <td>
-                                                Panquecas de avena<br/>
-                                                frutos secos<br/>
-                                                Agua de piña
-                                            </td>
-                                            <td>
-                                                1 manzana<br/>
-                                                1 vaso de agua
-                                            </td>
-                                            <td>
-                                                Pinco de pechuga<br/>
-                                                o camarones<br/>
-                                                brocoli<br/>
-                                                ensalada
-                                            </td>
-                                            <td>
-                                                yogurth griego<br/>
-                                                frutos secos
-                                            </td>
-                                            <td>
-                                                Brocoli al vapor<br/>
-                                                1 huevo cocido<br/>
-                                                yogurth<br/>
-                                                1 fruta
-                                            </td>
-                                        </tr>
-                                        <tr class="table-primary">
-                                            <td>Viernes</td>
-                                            <td>
-                                                Sandwich de atun<br/>
-                                                lechuga o espinaca<br/>
-                                                te verdé
-                                            </td>
-                                            <td>
-                                                1 Banano<br/>
-                                                frutos secos<br/>
-                                                1 vaso de agua
-                                            </td>
-                                            <td>
-                                                Pescado al vapor<br/>
-                                                1/2 Arroz integral<br/>
-                                                ensalada
-                                            </td>
-                                            <td>
-                                                Batido de fresas
-                                            </td>
-                                            <td>
-                                                Ensalada de lechuga<br/>
-                                                con vegetales<br/>
-                                                con trozos de pollo<br/>
-                                                a la plancha
-                                            </td>
-                                        </tr>
-                                        <tr class="table-info">
-                                            <td>Sabado</td>
-                                            <td>
-                                                Omelet de espinaca<br/>
-                                                jugo de naranja sin<br/>
-                                                azúcar
-                                            </td>
-                                            <td>
-                                                Batido de granola
-                                                <br/>en<br/>
-                                                leche de almendras
-                                            </td>
-                                            <td>
-                                                Filite de res<br/>
-                                                a la plancha<br/>
-                                                1/3 de aguacate<br/>
-                                                ensalada
-                                            </td>
-                                            <td>
-                                                1 banano
-                                            </td>
-                                            <td>
-                                                Pescado y habichuela<br/>
-                                                al vapor<br/>
-                                                ensalada
-                                            </td>
-                                        </tr>
+                                        <c:forEach items="#{rutinasyPlan.plannutricional}" var="objp">
+                                            <tr class="table-success">
+                                                <td>#{objp.dia}</td>
+                                                <td>
+                                                    #{objp.desayuno}
+                                                </td>
+                                                <td>
+                                                    #{objp.almuerzo}
+                                                </td>
+                                                <td>
+                                                    #{objp.cena}
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
