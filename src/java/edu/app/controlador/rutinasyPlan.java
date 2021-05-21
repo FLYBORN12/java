@@ -27,7 +27,7 @@ public class rutinasyPlan implements Serializable {
     @EJB
     private RutinaFacadeLocal rutinafacadelocal;
     private ArrayList<Rutina> listarutina = new ArrayList<>();
-    private int idCliente = loginView.getIdCliente();
+    private final int idCliente = loginView.getIdCliente();
     private ArrayList<Plannutricional> listaPlan = new ArrayList<>();
 
     public rutinasyPlan() {
